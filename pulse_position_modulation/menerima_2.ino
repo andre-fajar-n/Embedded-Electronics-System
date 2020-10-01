@@ -33,32 +33,31 @@ void setup() {
 
 void loop() { 
  for(a=1;a<9;a++){ 
-     Serial.print(pulsa[a]); 
-     Serial.print("\t"); 
- } 
-    Serial.print("\n"); 
-   /* servo[1]=map(pulsa[1],1000,2000,0,180); 
-    servo[2]=map(pulsa[2],1000,2000,0,180); 
-    servo[3]=map(pulsa[3],1000,2000,0,180); 
-    servo[4]=map(pulsa[4],1000,2000,0,180); 
-    servo[5]=map(pulsa[5],1000,2000,0,180); 
-    servo[6]=map(pulsa[6],1000,2000,0,180); 
-    servo[7]=map(pulsa[7],1000,2000,0,180); 
-    servo[8]=map(pulsa[8],1000,2000,0,180); 
-    channel1.write(servo[1]); 
-    channel2.write(servo[2]); 
-    channel3.write(servo[3]); 
-    channel4.write(servo[4]); 
-    channel5.write(servo[5]); 
-    channel6.write(servo[6]); 
-    channel7.write(servo[7]); 
-    channel8.write(servo[8]); 
-    delay(15); */ 
+    Serial.print(pulsa[a]); 
+    Serial.print("\t"); 
+  }
+
+  Serial.print("\n"); 
+  servo[1]=map(pulsa[1],1000,2000,0,180); 
+  servo[2]=map(pulsa[2],1000,2000,0,180); 
+  servo[3]=map(pulsa[3],1000,2000,0,180); 
+  servo[4]=map(pulsa[4],1000,2000,0,180); 
+  servo[5]=map(pulsa[5],1000,2000,0,180); 
+  servo[6]=map(pulsa[6],1000,2000,0,180); 
+  servo[7]=map(pulsa[7],1000,2000,0,180); 
+  servo[8]=map(pulsa[8],1000,2000,0,180); 
+
+  channel1.write(servo[1]); 
+  channel2.write(servo[2]); 
+  channel3.write(servo[3]); 
+  channel4.write(servo[4]); 
+  channel5.write(servo[5]); 
+  channel6.write(servo[6]); 
+  channel7.write(servo[7]); 
+  channel8.write(servo[8]); 
+  delay(15);
 } 
 
- 
-
- 
 //This is the interruption routine 
 //---------------------------------------------- 
 
@@ -78,15 +77,12 @@ ISR(PCINT2_vect){
     last_CH1_state = 0;                              //Store the current state into the last state for the next loop 
     i++; 
     Ch1 = current_count - counter_1;                //We make the time difference. Channel 1 is current_time - timer_1. 
-    if(Ch1 >2000){ 
-       
+
+    if(Ch1 >2000){     
       pulsa[0] = Ch1; 
       i=0; 
-    }else{ 
+    } else {
       pulsa[i] = Ch1; 
-    } 
-   
+    }
   } 
-   
-  
 }
