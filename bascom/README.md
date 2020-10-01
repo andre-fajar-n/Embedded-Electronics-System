@@ -1,0 +1,1 @@
+# Accessing MPU6050 used ATMega16 with Bascom Language
